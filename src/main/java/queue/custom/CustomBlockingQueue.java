@@ -9,9 +9,9 @@ package queue.custom;
  */
 public class CustomBlockingQueue<T> {
 
-    private int initSize = 10;
+    private volatile int initSize = 10;
 
-    private int realSize = 0;
+    private volatile int realSize = 0;
 
     //队列满了
     private final Object fullLock = new Object();
@@ -93,7 +93,7 @@ public class CustomBlockingQueue<T> {
                     try {
                         int k = customBlockingQueue.take();
                         System.out.println("out:" + k);
-                        sleep(9000);
+                        sleep(4000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
